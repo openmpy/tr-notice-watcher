@@ -68,13 +68,13 @@ async function checkUpdate() {
     };
 
     const dateGetters = {
-      NOTICE: (post) => post.createdAt,
-      UPDATE: (post) => post.createdAt,
+      NOTICE: (post) => post.startAt,
+      UPDATE: (post) => post.startAt,
       EVENT: (post) => ({ startAt: post.startAt, endAt: post.endAt }),
-      WINNER: (post) => post.createdAt,
-      PIERROT: (post) => post.createdAt,
-      ISSUE: (post) => post.createdAt,
-      LEAGUE: (post) => post.createdAt,
+      WINNER: (post) => post.startAt,
+      PIERROT: (post) => post.startAt,
+      ISSUE: (post) => post.startAt,
+      LEAGUE: (post) => post.startAt,
     };
 
     for (let i = 0; i < types.length; i++) {

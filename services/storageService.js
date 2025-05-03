@@ -9,26 +9,26 @@ export class StorageService {
 
       // 모든 필수 타입이 있는지 확인하고 없으면 기본값 추가
       const defaultData = {
-        notice: { subject: "", createdAt: "" },
-        update: { subject: "", createdAt: "" },
+        notice: { subject: "", startAt: "" },
+        update: { subject: "", startAt: "" },
         event: { subject: "", startAt: "", endAt: "" },
-        winner: { subject: "", createdAt: "" },
-        pierrot: { subject: "", createdAt: "" },
-        issue: { subject: "", createdAt: "" },
-        league: { subject: "", createdAt: "" },
+        winner: { subject: "", startAt: "" },
+        pierrot: { subject: "", startAt: "" },
+        issue: { subject: "", startAt: "" },
+        league: { subject: "", startAt: "" },
       };
 
       return { ...defaultData, ...parsed };
     } catch (error) {
       console.error("저장된 데이터를 불러오는데 실패했습니다:", error.message);
       return {
-        notice: { subject: "", createdAt: "" },
-        update: { subject: "", createdAt: "" },
+        notice: { subject: "", startAt: "" },
+        update: { subject: "", startAt: "" },
         event: { subject: "", startAt: "", endAt: "" },
-        winner: { subject: "", createdAt: "" },
-        pierrot: { subject: "", createdAt: "" },
-        issue: { subject: "", createdAt: "" },
-        league: { subject: "", createdAt: "" },
+        winner: { subject: "", startAt: "" },
+        pierrot: { subject: "", startAt: "" },
+        issue: { subject: "", startAt: "" },
+        league: { subject: "", startAt: "" },
       };
     }
   }
