@@ -1,0 +1,7 @@
+services:
+  tr-watcher:
+    build: .
+    container_name: tr-watcher
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Seoul
