@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export const STORAGE_FILE = "watch_list.json";
+export const STORAGE_FILE = "data/watch_list.json";
 
 export const DISCORD_WEBHOOK_URLS = {
   NOTICE: process.env.DISCORD_WEBHOOK_URL_NOTICE,

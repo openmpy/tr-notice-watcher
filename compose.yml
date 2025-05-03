@@ -5,3 +5,8 @@ services:
     restart: unless-stopped
     environment:
       - TZ=Asia/Seoul
+    volumes:
+      - ./data:/app/data
+
+volumes:
+  data:
