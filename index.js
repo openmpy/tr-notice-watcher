@@ -33,7 +33,7 @@ async function checkNewPosts(type, response, previous, getContent) {
 
 async function checkUpdate() {
   if (isChecking) {
-    console.log("타이머가 이미 실행중입니다.");
+    console.error("타이머가 이미 실행중입니다.");
     return;
   }
 
@@ -117,11 +117,6 @@ async function checkUpdate() {
     );
 
     await StorageService.saveWatchList(latestPosts);
-
-    console.log(
-      "[확인]",
-      new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" })
-    );
   } catch (error) {
     console.error("에러 발생: ", error.message);
   } finally {
