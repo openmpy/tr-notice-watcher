@@ -19,8 +19,9 @@ async function checkNewPosts(type, response, previous, getContent) {
   const newPosts = [];
 
   for (const post of response.data.result.list) {
-    if (!post) continue; // post가 undefined인 경우 건너뛰기
-
+    if (!post) {
+      continue;
+    }
     if (getContent(post) === getContent(previous[type])) {
       break;
     }
