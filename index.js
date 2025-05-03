@@ -9,6 +9,7 @@ const TR_URLS = {
   NOTICE: (id) => `${TR_BASE_URLS.NOTICE}/${id}?page=1`,
   UPDATE: (id) => `${TR_BASE_URLS.UPDATE}/${id}?page=1`,
   EVENT: (link) => `${TR_BASE_URLS.EVENT}${link}`,
+  WINNER: (id) => `${TR_BASE_URLS.WINNER}/${id}?page=1`,
   PIERROT: (id) => `${TR_BASE_URLS.PIERROT}/${id}?page=1`,
   ISSUE: (id) => `${TR_BASE_URLS.ISSUE}/${id}?page=1`,
   LEAGUE: (id) => `${TR_BASE_URLS.LEAGUE}/${id}?page=1`,
@@ -18,6 +19,8 @@ async function checkNewPosts(type, response, previous, getContent) {
   const newPosts = [];
 
   for (const post of response.data.result.list) {
+    if (!post) continue; // post가 undefined인 경우 건너뛰기
+
     if (getContent(post) === getContent(previous[type])) {
       break;
     }
@@ -44,11 +47,20 @@ async function checkUpdate() {
     const newPosts = {};
 
     // 각 타입별로 새로운 게시글 확인
-    const types = ["NOTICE", "UPDATE", "EVENT", "PIERROT", "ISSUE", "LEAGUE"];
+    const types = [
+      "NOTICE",
+      "UPDATE",
+      "EVENT",
+      "WINNER",
+      "PIERROT",
+      "ISSUE",
+      "LEAGUE",
+    ];
     const contentGetters = {
       NOTICE: (post) => post.subject,
       UPDATE: (post) => post.subject,
       EVENT: (post) => post.subject,
+      WINNER: (post) => post.subject,
       PIERROT: (post) => post.subject,
       ISSUE: (post) => post.subject,
       LEAGUE: (post) => post.subject,
@@ -58,6 +70,7 @@ async function checkUpdate() {
       NOTICE: (post) => post.createdAt,
       UPDATE: (post) => post.createdAt,
       EVENT: (post) => ({ startAt: post.startAt, endAt: post.endAt }),
+      WINNER: (post) => post.createdAt,
       PIERROT: (post) => post.createdAt,
       ISSUE: (post) => post.createdAt,
       LEAGUE: (post) => post.createdAt,
