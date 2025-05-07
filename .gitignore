@@ -34,4 +34,4 @@ mock.json
 # Temporary files
 tmp/
 temp/
-watch_list.json
+data/
