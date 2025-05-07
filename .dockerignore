@@ -31,4 +31,7 @@ mock.json
 Dockerfile
 docker-compose.yml
 compose.yml
-.dockerignore 
+.dockerignore
+
+# Data
+data/
