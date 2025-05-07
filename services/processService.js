@@ -49,7 +49,7 @@ export async function processEventData(type, config) {
         await sendDiscordEventNotification(
           config.webhookUrl,
           item.subject,
-          item.url,
+          `${config.baseUrl}${item.link}`,
           item.startAt,
           item.endAt,
           item.imageUrl
