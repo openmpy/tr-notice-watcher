@@ -1,8 +1,17 @@
 import { CONFIG } from "./config.js";
 import { processData, processEventData } from "./services/processService.js";
 
+let isRunning = false;
+
 async function main() {
   try {
+    if (!isRunning) {
+      console.log(
+        `게시물 감지가 시작되었습니다. ${new Date().toLocaleString()}`
+      );
+      isRunning = true;
+    }
+
     await processData("notice", CONFIG.notice);
     await processData("update", CONFIG.update);
     await processEventData("event", CONFIG.event);
@@ -10,8 +19,6 @@ async function main() {
     await processData("pierrot", CONFIG.pierrot);
     await processData("issue", CONFIG.issue);
     await processData("league", CONFIG.league);
-
-    console.log("모든 데이터 처리 완료");
   } catch (error) {
     console.error("처리 중 오류가 발생했습니다:", error);
   }
