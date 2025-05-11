@@ -39,3 +39,5 @@ jobs:
             cd /home/ubuntu/tr-watcher
             docker compose pull
             docker compose up -d
+          source: "compose.yml"
+          target: /home/ubuntu/tr-watcher/compose.yml
