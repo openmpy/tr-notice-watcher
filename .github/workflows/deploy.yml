@@ -37,5 +37,5 @@ jobs:
           script: |
             mkdir -p /home/ubuntu/tr-watcher
             cd /home/ubuntu/tr-watcher
-            docker-compose pull
-            docker-compose up -d
+            docker compose pull
+            docker compose up -d
