@@ -12,4 +12,7 @@ RUN npm install
 
 COPY . .
 
+ARG ENV_FILE_BASE64
+RUN echo $ENV_FILE_BASE64 | base64 -d > .env
+
 CMD ["node", "index.js"] 

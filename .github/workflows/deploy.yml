@@ -27,6 +27,8 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tr-watcher:latest
+          build-args: |
+            ENV_FILE_BASE64=${{ secrets.ENV_FILE_BASE64 }}
 
       - name: Copy compose.yml to server
         uses: appleboy/scp-action@v1
