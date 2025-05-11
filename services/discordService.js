@@ -53,3 +53,31 @@ export async function sendDiscordEventNotification(
     }
   );
 }
+
+export async function sendDiscordVideoNotification(
+  webhookUrl,
+  subject,
+  link,
+  imageUrl
+) {
+  await axios.post(
+    webhookUrl,
+    {
+      embeds: [
+        {
+          title: subject,
+          url: link,
+          color: 0x000000,
+          image: {
+            url: imageUrl,
+          },
+        },
+      ],
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+}

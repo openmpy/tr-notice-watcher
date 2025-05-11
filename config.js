@@ -51,4 +51,9 @@ export const CONFIG = {
     baseUrl: process.env.TR_LEAGUE_BASE_URL,
     dataFile: "leagues.json",
   },
+  video: {
+    webhookUrl: process.env.DISCORD_WEBHOOK_URL_VIDEO,
+    apiUrl: process.env.TR_VIDEO_API_URL,
+    dataFile: "videos.json",
+  },
 };

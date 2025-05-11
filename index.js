@@ -1,5 +1,9 @@
 import { CONFIG } from "./config.js";
-import { processData, processEventData } from "./services/processService.js";
+import {
+  processData,
+  processEventData,
+  processVideoData,
+} from "./services/processService.js";
 
 let isRunning = false;
 
@@ -19,6 +23,7 @@ async function main() {
     await processData("pierrot", CONFIG.pierrot);
     await processData("issue", CONFIG.issue);
     await processData("league", CONFIG.league);
+    await processVideoData("video", CONFIG.video);
   } catch (error) {
     console.error("처리 중 오류가 발생했습니다:", error);
   }
