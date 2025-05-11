@@ -1,6 +1,6 @@
 services:
   tr-watcher:
-    build: .
+    image: openmpy/tr-watcher:latest
     container_name: tr-watcher
     restart: unless-stopped
     environment:
