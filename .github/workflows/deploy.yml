@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.NAVER_CLOUD_SSH_USER }}
           password: ${{ secrets.NAVER_CLOUD_SSH_PASSWORD }}
           source: "compose.yml"
-          target: "/home/ubuntu/tr-watcher/compose.yml"
+          target: "/home/ubuntu/tr-watcher"
 
       - name: Deploy to Naver Cloud
         uses: appleboy/ssh-action@v1
