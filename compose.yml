@@ -7,7 +7,9 @@ services:
       - TZ=Asia/Seoul
     volumes:
       - ./data:/app/data
-      - .env:/app/.env
+      - type: bind
+        source: .env
+        target: /app/.env
 
 volumes:
   data:
