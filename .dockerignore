@@ -29,8 +29,6 @@ mock.json
 
 # Docker
 Dockerfile
-docker-compose.yml
-compose.yml
 .dockerignore
 
 # Data
