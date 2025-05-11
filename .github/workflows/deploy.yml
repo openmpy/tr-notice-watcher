@@ -36,6 +36,6 @@ jobs:
           password: ${{ secrets.NAVER_CLOUD_SSH_PASSWORD }}
           script: |
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/tr-watcher:latest
-            cd /tr-watcher
+            cd /home/ubuntu/tr-watcher
             docker compose down || true
             docker compose up -d
