@@ -39,5 +39,12 @@ jobs:
             cd /home/ubuntu/tr-watcher
             docker compose pull
             docker compose up -d
+
+      - name: Copy compose file
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.NAVER_CLOUD_HOST }}
+          username: ${{ secrets.NAVER_CLOUD_SSH_USER }}
+          password: ${{ secrets.NAVER_CLOUD_SSH_PASSWORD }}
           source: "compose.yml"
-          target: /home/ubuntu/tr-watcher/compose.yml
+          target: "/home/ubuntu/tr-watcher/compose.yml"
