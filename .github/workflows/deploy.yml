@@ -28,15 +28,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tr-watcher:latest
 
-      - name: Copy compose file
-        uses: appleboy/scp-action@v1
-        with:
-          host: ${{ secrets.NAVER_CLOUD_HOST }}
-          username: ${{ secrets.NAVER_CLOUD_SSH_USER }}
-          password: ${{ secrets.NAVER_CLOUD_SSH_PASSWORD }}
-          source: "compose.yml"
-          target: "/home/ubuntu/tr-watcher"
-
       - name: Deploy to Naver Cloud
         uses: appleboy/ssh-action@v1
         with:
