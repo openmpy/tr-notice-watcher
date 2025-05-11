@@ -7,7 +7,7 @@ services:
       - TZ=Asia/Seoul
     volumes:
       - ./data:/app/data
-      - ./.env:/app/.env
+      - .env:/app/.env
 
 volumes:
   data:
