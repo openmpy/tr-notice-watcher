@@ -1,12 +1,21 @@
 import axios from "axios";
 import { formatDate, formatEventDate } from "../utils/dateUtils.js";
 
+function isWithinDays(date) {
+  const now = new Date();
+  const target = new Date(date);
+  const diff = Math.abs(now - target);
+  return diff <= 7 * 24 * 60 * 60 * 1000;
+}
+
 export async function sendDiscordNotification(
   webhookUrl,
   subject,
   url,
   startAt
 ) {
+  if (!isWithinDays(startAt)) return;
+
   await axios.post(
     webhookUrl,
     {
@@ -29,6 +38,8 @@ export async function sendDiscordEventNotification(
   endAt,
   imageUrl
 ) {
+  if (!isWithinDays(startAt)) return;
+
   await axios.post(
     webhookUrl,
     {
@@ -60,6 +71,8 @@ export async function sendDiscordVideoNotification(
   link,
   imageUrl
 ) {
+  if (!isWithinDays(startAt)) return;
+
   await axios.post(
     webhookUrl,
     {
