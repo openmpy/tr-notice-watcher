@@ -56,4 +56,7 @@ export const CONFIG = {
     apiUrl: process.env.TR_VIDEO_API_URL,
     dataFile: "videos.json",
   },
+  deploy: {
+    webhookUrl: process.env.DISCORD_WEBHOOK_URL_DEPLOY,
+  },
 };

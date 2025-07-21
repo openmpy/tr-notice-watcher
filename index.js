@@ -1,4 +1,5 @@
 import { CONFIG } from "./config.js";
+import { sendDiscordDeployNotification } from "./services/discordService.js";
 import {
   processData,
   processEventData,
@@ -13,6 +14,8 @@ async function main() {
       console.log(
         `게시물 감지가 시작되었습니다. ${new Date().toLocaleString()}`
       );
+      await sendDiscordDeployNotification(CONFIG.deploy.webhookUrl);
+
       isRunning = true;
     }
 

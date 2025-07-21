@@ -83,8 +83,6 @@ export async function sendDiscordVideoNotification(
   link,
   imageUrl
 ) {
-  if (!isWithinDays(startAt)) return;
-
   await axios.post(
     webhookUrl,
     {
@@ -98,6 +96,21 @@ export async function sendDiscordVideoNotification(
           },
         },
       ],
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+}
+
+export async function sendDiscordDeployNotification(webhookUrl) {
+  await axios.post(
+    webhookUrl,
+    {
+      content: "배포가 정상적으로 진행됐습니다.",
+      flags: 4,
     },
     {
       headers: {
