@@ -1,5 +1,5 @@
 import axios from "axios";
-import { formatDate, formatEventDate } from "../utils/dateUtils.js";
+import { formatEventDate } from "../utils/dateUtils.js";
 
 function isWithinDays(date) {
   const now = new Date();
@@ -10,16 +10,22 @@ function isWithinDays(date) {
 
 export async function sendDiscordNotification(
   webhookUrl,
+  startAt,
   subject,
-  url,
-  startAt
+  names,
+  urls,
+  id
 ) {
   if (!isWithinDays(startAt)) return;
+
+  const content =
+    `${subject}\n` +
+    names.map((name, idx) => `[${name}](${urls[idx]}/${id})`).join(" · ");
 
   await axios.post(
     webhookUrl,
     {
-      content: `[${subject}](${url})\n${formatDate(startAt)}`,
+      content,
       flags: 4,
     },
     {
@@ -33,12 +39,18 @@ export async function sendDiscordNotification(
 export async function sendDiscordEventNotification(
   webhookUrl,
   subject,
-  url,
+  names,
+  urls,
+  link,
   startAt,
   endAt,
   imageUrl
 ) {
   if (!isWithinDays(startAt)) return;
+
+  const content = names
+    .map((name, idx) => `[${name}](${urls[idx]}${link})`)
+    .join(" · ");
 
   await axios.post(
     webhookUrl,
@@ -46,13 +58,13 @@ export async function sendDiscordEventNotification(
       embeds: [
         {
           title: subject,
-          url: url,
           color: 0x000000,
-          description: `${formatEventDate(startAt)} ~ ${formatEventDate(
-            endAt
-          )}`,
+          description: content,
           image: {
             url: imageUrl,
+          },
+          footer: {
+            text: `${formatEventDate(startAt)} ~ ${formatEventDate(endAt)}`,
           },
         },
       ],

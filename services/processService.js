@@ -19,12 +19,17 @@ export async function processData(type, config) {
     if (newItems.length > 0) {
       console.log(`새로운 ${type}가 ${newItems.length}개 있습니다.`);
 
+      const urls = config.baseUrl.split(",");
+      const names = ["라온", "한게임", "스토브"];
+
       for (const item of newItems) {
         await sendDiscordNotification(
           config.webhookUrl,
+          item.startAt,
           item.subject,
-          `${config.baseUrl}/${item.id}`,
-          item.startAt
+          names,
+          urls,
+          item.id
         );
       }
     }
@@ -46,11 +51,16 @@ export async function processEventData(type, config) {
     if (newItems.length > 0) {
       console.log(`새로운 ${type}가 ${newItems.length}개 있습니다.`);
 
+      const urls = config.baseUrl.split(",");
+      const names = ["라온", "한게임", "스토브"];
+
       for (const item of newItems) {
         await sendDiscordEventNotification(
           config.webhookUrl,
           item.subject,
-          `${config.baseUrl}${item.link}`,
+          names,
+          urls,
+          item.link,
           item.startAt,
           item.endAt,
           item.imageUrl
